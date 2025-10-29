@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const app = express();
@@ -7,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const PRIVATE_APP_ACCESS = '';
+const PRIVATE_APP_ACCESS = process.env.PRIVATE_APP_ACCESS;
 
 app.get('/', async (req, res) => {
     const concertsEndpoint = 'https://api.hubspot.com/crm/v3/objects/2-52193574?properties=concert_name,artist,event_date';
